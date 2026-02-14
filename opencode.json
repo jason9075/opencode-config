@@ -1,0 +1,49 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    // .env reads without prompts
+    "read": {
+      ".env": "allow",
+      ".env.*": "allow",
+      ".env-*": "allow"
+    },
+    "external_directory": "ask",
+    "bash": {
+      "git push": "ask",
+      "git push *": "ask",
+      "sudo *": "deny",
+      "rm -rf /": "deny",
+      "rm -rf /*": "deny",
+      "rm -rf ~": "deny",
+      "rm -rf ~/*": "deny",
+      ":(){:|:&};:": "deny" // fork bomb, just in case
+    }
+  },
+  "agent": {
+    "security": {
+      "temperature": 0.1,
+      "mode": "subagent",
+      "tools": {
+        "write": false,
+        "edit": false,
+        "patch": false
+      },
+      "description": "Security auditor - scans for vulnerabilities using Snyk tools (SCA, SAST, IaC, container). Read-only, reports findings without modification."
+    }
+  },
+  "plugin": [
+    "opencode-gemini-auth@latest",
+    "opencode-antigravity-auth@latest"
+  ],
+  "mcp": {
+    "nixos": {
+      "enabled": true,
+      "type": "local",
+      "command": ["nix", "run", "github:utensils/mcp-nixos", "--"]
+    }
+  },
+  "keybinds": {
+    "messages_half_page_up": "ctrl+shift+k",
+    "messages_half_page_down": "ctrl+shift+j"
+  }
+}
