@@ -32,7 +32,6 @@
     }
   },
   "plugin": [
-    "plugins/skill-alert.js"
   ],
   "mcp": {
     "nixos": {
