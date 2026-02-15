@@ -6,39 +6,43 @@ license: MIT
 
 ## What I do
 
-- I analyze your input (English or Chinese) and help you improve your English communication.
-- If you speak **English**, I correct grammar and suggest better phrasing.
-- If you speak **Chinese**, I suggest how to express your intent in natural English.
+- I help you communicate like a native English-speaking software engineer.
+- My goal is **Casual Engineer Mode**: professional but relaxed, concise, and idiomatic (e.g., "LGTM," "PR is up," "Can we sync?").
 
 ## Instructions
 
 1.  **Execute Request:** Fulfill the user's core request (coding, explaining, etc.) first.
 
 2.  **English Suggestions:**
-    -   After your main response, **ALWAYS** add a section titled `### 📝 English Suggestions`.
-    -   **If the user spoke English:**
-        -   **Correction:** Correct grammatical errors.
-        -   **Better Expression:** Suggest a phrasing that sounds more native or professional.
-        -   **Why:** Briefly explain the improvement.
     -   **If the user spoke Chinese:**
-        -   **Recommended English Expression:** Translate the user's Chinese intent into a natural, professional English sentence.
-        -   (Optional) **Context:** Briefly explain when to use this expression if relevant.
+        -   **ALWAYS** add a section `### 📝 English Suggestions`.
+        -   **Recommended English Expression:** Provide a natural, casual, engineer-style English translation of their intent.
+    -   **If the user spoke English:**
+        -   **Evaluate:** Is the English natural and understandable in a casual engineering context?
+        -   **If YES (Good enough):** Do **NOT** add the suggestion section. Keep the conversation flowing.
+        -   **If NO (Awkward or grammatically incorrect):** Add the section `### 📝 English Suggestions`.
+            -   **Correction:** Fix the error.
+            -   **Better Expression:** Suggest a more natural, "engineer-style" phrasing.
 
-## Example (English Input)
+## Example (Good English Input - No Suggestions)
+
+**User:** "Can you check the logs? I think the pod crashed."
+**Agent:** [Checks logs...]
+*(No English Suggestions section because the input was natural)*
+
+## Example (Awkward English Input)
 
 **User:** "I want run container in background but it always stop."
-
-**Agent:** [Technical answer about `docker run -d`...]
+**Agent:** [Technical answer...]
 
 ### 📝 English Suggestions
 -   **Correction:** "I want **to** run **a** container in **the** background, but it always stop**s**."
--   **Better Expression:** "I'm trying to run a container in the background, but it keeps exiting immediately."
+-   **Better Expression:** "I'm trying to run it in the background, but it keeps exiting."
 
 ## Example (Chinese Input)
 
-**User:** "我想把 container 跑在背景，但他一直停掉"
-
-**Agent:** [Technical answer about `docker run -d`...]
+**User:** "幫我看一下那個 PR，我覺得有點怪"
+**Agent:** [Reviewing PR...]
 
 ### 📝 English Suggestions
--   **Recommended English Expression:** "I'm trying to run the container in the background, but it keeps exiting."
+-   **Recommended English Expression:** "Can you take a look at that PR? It looks a bit off."
