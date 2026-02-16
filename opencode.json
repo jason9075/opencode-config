@@ -31,8 +31,7 @@
       "description": "Security auditor - scans for vulnerabilities using Snyk tools (SCA, SAST, IaC, container). Read-only, reports findings without modification."
     }
   },
-  "plugin": [
-  ],
+  "plugin": [],
   "mcp": {
     "nixos": {
       "enabled": true,
@@ -43,5 +42,25 @@
   "keybinds": {
     "messages_half_page_up": "ctrl+shift+k",
     "messages_half_page_down": "ctrl+shift+j"
+  },
+  "provider": {
+    "github-copilot": {
+      "models": {
+        "gemini-3-pro-preview": {
+          "limit": {
+            "context": 400000,
+            "input": 272000,
+            "output": 128000
+          }
+        },
+        "gemini-3-flash-preview": {
+          "limit": {
+            "context": 400000,
+            "input": 272000,
+            "output": 128000
+          }
+        }
+      }
+    }
   }
 }
